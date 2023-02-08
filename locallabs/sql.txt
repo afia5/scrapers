@@ -1,0 +1,21 @@
+select product_name,product_img_url,product_url,product_price_min,product_short_description from grommet_products
+ join grommet_product_categories on grommet_products.id = grommet_product_categories.product_id join grommet_gifts_categories 
+ on grommet_gifts_categories.id = grommet_product_categories.product_category_id
+ where grommet_gifts_categories.sub_category = 'Jewelry' and grommet_products.is_sold_out = 0;
+
+
+select product_name,product_img_url,product_url,product_price_min,product_short_description from grommet_products
+ join grommet_product_to_keyword on grommet_products.id = grommet_product_to_keyword.product_id join grommet_product_keywords
+ on grommet_product_keywords.id = grommet_product_to_keyword.keyword_id
+ where grommet_product_keywords.keyword = 'Hair accessor' and grommet_products.is_sold_out = 0;
+
+
+select product_name,product_img_url,product_url,product_price_min,product_short_description from grommet_products
+ join grommet_product_categories on grommet_products.id = grommet_product_categories.product_id join grommet_gifts_categories
+ on grommet_gifts_categories.id = grommet_product_categories.product_category_id
+ where grommet_gifts_categories.sub_category = 'Beauty & Personal Care' OR grommet_gifts_categories.sub_category='SkinCare' and grommet_products.is_sold_out = 0
+  	UNION
+select product_name,product_img_url,product_url,product_price_min,product_short_description from grommet_products
+ join grommet_product_to_keyword on grommet_products.id = grommet_product_to_keyword.product_id join grommet_product_keywords
+ on grommet_product_keywords.id = grommet_product_to_keyword.keyword_id
+ where grommet_product_keywords.keyword = 'Aromatherapy' and grommet_products.is_sold_out = 0;
